@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 固定窗口限流
+ * 会有时间窗口的临界突变问题：1s 中的后 500 ms 和第 2s 的前 500ms 时，虽然是加起来是 1s 时间，却可以被请求 4 次
  */
 public class RateLimiterSimpleWindow {
     // 阈值
@@ -25,6 +26,8 @@ public class RateLimiterSimpleWindow {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        // 先休眠 400ms，可以更快的到达时间窗口（测试时间窗口临界突变）。
+//        Thread.sleep(400);
         for (int i = 0; i < 10; i++) {
             Thread.sleep(250);
             LocalTime now = LocalTime.now();
