@@ -3,7 +3,10 @@ package schedule;
 import java.util.*;
 
 /**
- * DAG编排
+ * DAG编排（Directed Acyclic Graph Scheduling）指的是：
+ * 根据任务之间的【有向无环】依赖关系，计算一个合法的执行顺序，
+ * 确保每个任务在其所有前置依赖完成后才能执行。
+ * 它是工作流调度、数据任务调度、编译依赖管理等系统的核心基础。
  * 输入示例：
  5 5
  0 1
